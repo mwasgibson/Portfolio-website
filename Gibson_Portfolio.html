@@ -6,213 +6,681 @@
 <title>Gibson Muiruri Mwangi | Software Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0f19;--card:#141a28;--card2:#1b2335;--primary:#5b8cff;--secondary:#7c4dff;--text:#f5f7fa;--muted:#a8b2c3;--border:#2c364d;--accent1:#6366f1;--accent2:#ec4899;--accent3:#f59e0b;}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
-.container{width:90%;max-width:1200px;margin:auto}
-header{position:fixed;width:100%;top:0;z-index:1000;backdrop-filter:blur(16px);background:rgba(11,15,25,.92);border-bottom:1px solid var(--border);transition:all 0.3s ease}
-nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0}
-.logo{font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,var(--accent1),var(--accent2));-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-links{display:flex;gap:1.5rem;flex-wrap:wrap}
-.nav-links a{text-decoration:none;color:var(--muted);transition:all 0.3s ease;position:relative;font-weight:500}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--accent1),var(--accent2));transition:width 0.3s ease}
-.nav-links a:hover{color:#fff}
-.nav-links a:hover::after{width:100%}
-.hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px}
-.hamburger span{width:24px;height:2.5px;background:var(--text);border-radius:2px;transition:all 0.3s ease}
-.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px)}
-.hamburger.active span:nth-child(2){opacity:0}
-.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
-.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(11,15,25,0.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);flex-direction:column;gap:1rem;padding:2rem 1rem;z-index:999;animation:slideDown 0.3s ease}
-.mobile-menu.active{display:flex}
-@keyframes slideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
-.mobile-menu a{text-decoration:none;color:var(--muted);font-size:1rem;font-weight:500;padding:0.75rem 0;transition:color 0.3s ease;border-bottom:1px solid var(--border)}
-.mobile-menu a:hover{color:var(--accent1)}
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:100px;opacity:0;animation:fadeInUp 0.8s ease 0.2s forwards}
-.hero-content{max-width:850px}
-.hero h1{font-size:4rem;line-height:1.1;margin-bottom:1rem;font-weight:700}
-.hero span{background:linear-gradient(135deg,var(--accent1),var(--accent2),var(--accent3));background-size:200% 200%;-background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 6s ease infinite}
-.hero p{font-size:1.15rem;color:var(--muted);margin-bottom:1.5rem}
-@keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.btn-group{display:flex;gap:1rem;flex-wrap:wrap}
-.btn{padding:14px 24px;border-radius:12px;text-decoration:none;font-weight:600;transition:all 0.3s ease;display:inline-block;border:none;cursor:pointer}
-.btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff;box-shadow:0 8px 24px rgba(99,102,241,0.3)}
-.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(99,102,241,0.4)}
-.btn-secondary{border:1.5px solid var(--border);color:#fff;background:transparent}
-.btn-secondary:hover{border-color:var(--accent1);background:rgba(99,102,241,0.1);transform:translateY(-3px)}
-section{padding:90px 0;position:relative;opacity:0;animation:fadeInUp 0.8s ease forwards}
-section:nth-child(even){animation-delay:0.1s}
-@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.section-title{font-size:2.4rem;margin-bottom:2rem;font-weight:700;position:relative;display:inline-block}
-.section-title::after{content:'';position:absolute;bottom:-10px;left:0;width:80px;height:3px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:2px}
-#stats{background:linear-gradient(135deg,rgba(99,102,241,0.05),rgba(236,72,153,0.05));border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.card,.project,.timeline-item,.stat-card{background:rgba(20,27,46,0.6);border:1px solid var(--border);border-radius:18px;transition:all 0.3s ease;backdrop-filter:blur(8px)}
-.card{padding:2rem}
-.card:hover{border-color:var(--accent1);transform:translateY(-6px);background:rgba(20,27,46,0.9)}
-.about{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-.skills,.stats-grid,.projects-grid{display:grid;gap:1rem}
-.skills{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.stats-grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.projects-grid{grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}
-.stat-card{padding:2rem;text-align:center}
-.stat-card h2{font-size:2.5rem;background:linear-gradient(135deg,var(--accent1),var(--accent2));-background-clip:text;-webkit-text-fill-color:transparent}
-.stat-card:hover{border-color:var(--accent1);transform:translateY(-8px);background:rgba(20,27,46,0.9)}
-.skill{background:rgba(20,27,46,0.6);border:1px solid var(--border);padding:1rem;border-radius:14px;transition:all 0.3s ease;backdrop-filter:blur(8px)}
-.skill h3{color:var(--accent1)}
-.skill:hover{border-color:var(--accent2);transform:translateX(4px);background:rgba(20,27,46,0.9)}
-.project{padding:2rem;transition:.3s;position:relative;overflow:hidden}
-.project::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(99,102,241,0.1),transparent);transition:left 0.5s ease;z-index:0}
-.project:hover::before{left:100%}
-.project h3,.project p{position:relative;z-index:1}
-.project:hover{transform:translateY(-8px);border-color:var(--accent1);background:rgba(20,27,46,0.9)}
-.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
-.tag{background:rgba(91,140,255,.15);color:#8fb2ff;padding:.4rem .8rem;border-radius:999px;font-size:.85rem}
-.in-progress{background:rgba(255,193,7,.15);color:#ffc107;padding:.4rem .8rem;border-radius:999px;display:inline-block;margin-top:1rem}
-.contact{text-align:center}
-#contact{background:linear-gradient(135deg,rgba(99,102,241,0.05),rgba(236,72,153,0.05));border-top:1px solid var(--border)}
-.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem}
-.contact-links a{text-decoration:none;color:white;border:1px solid var(--border);padding:12px 20px;border-radius:12px;transition:all 0.3s ease;display:inline-block}
-.contact-links a:hover{border-color:var(--accent1);background:rgba(99,102,241,0.1);transform:translateY(-3px);color:var(--accent1)}
-.timeline{display:flex;flex-direction:column;gap:1rem}
-.timeline-item{padding:1.5rem;transition:.3s;border-left:3px solid var(--accent1)}
-.timeline-item:hover{transform:translateX(6px);border-left-color:var(--accent2);background:rgba(20,27,46,0.9)}
-.timeline-item h3{color:var(--accent1)}
-footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--muted)}
-.reveal{opacity:0;transform:translateY(30px);transition:all 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
-.reveal.active{opacity:1;transform:translateY(0)}
-@media(max-width:768px){.hero h1{font-size:2.6rem}.about{grid-template-columns:1fr}.nav-links{display:none}.hamburger{display:flex}.hero{padding-top:100px}.btn-group{flex-direction:column}.btn{width:100%;text-align:center}.projects-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr}section{padding:80px 0}}
+:root {
+  --bg: #090d18;
+  --surface: rgba(18, 27, 45, 0.92);
+  --surface-strong: rgba(20, 27, 46, 0.95);
+  --surface-soft: rgba(20, 27, 46, 0.65);
+  --primary: #5b8cff;
+  --secondary: #7c4dff;
+  --accent1: #6366f1;
+  --accent2: #ec4899;
+  --accent3: #f59e0b;
+  --text: #f5f7fa;
+  --muted: #a8b2c3;
+  --border: rgba(76, 96, 143, 0.45);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background: radial-gradient(circle at top, rgba(99, 102, 241, 0.14), transparent 25%),
+              radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.14), transparent 22%),
+              var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+.container {
+  width: min(92%, 1180px);
+  margin: 0 auto;
+}
+main {
+  padding-top: 72px;
+}
+header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  backdrop-filter: blur(16px);
+  background: rgba(9, 13, 24, 0.92);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.28s ease;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0 0.95rem;
+}
+.logo {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.nav-links a,
+.mobile-menu a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.24s ease;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+  transition: width 0.24s ease;
+}
+.nav-links a:hover,
+.mobile-menu a:hover {
+  color: #fff;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+.hamburger {
+  display: none;
+  cursor: pointer;
+  gap: 6px;
+  flex-direction: column;
+}
+.hamburger span {
+  width: 24px;
+  height: 2.5px;
+  border-radius: 999px;
+  background: var(--text);
+  transition: all 0.28s ease;
+}
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  background: rgba(9, 13, 24, 0.98);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.75rem 1rem;
+  z-index: 999;
+}
+.mobile-menu.active {
+  display: flex;
+}
+.mobile-menu a {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.hero {
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+  padding: 140px 0 80px;
+}
+.hero-content {
+  max-width: 850px;
+}
+.hero h1 {
+  font-size: clamp(3rem, 5vw, 4.4rem);
+  line-height: 1.05;
+  margin-bottom: 1rem;
+  font-weight: 800;
+}
+.hero span {
+  background: linear-gradient(135deg, var(--accent1), var(--accent2), var(--accent3));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease infinite;
+}
+.hero p {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 780px;
+  margin-bottom: 1.8rem;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.btn-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.24s ease, box-shadow 0.24s ease, background 0.24s ease;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  color: #fff;
+  box-shadow: 0 18px 40px rgba(99, 102, 241, 0.18);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  border: 1.5px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: #fff;
+}
+.btn-secondary:hover {
+  background: rgba(99, 102, 241, 0.12);
+  transform: translateY(-2px);
+}
+section {
+  padding: 90px 0;
+}
+section:nth-of-type(even) {
+  opacity: 1;
+}
+.section-title {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  display: inline-block;
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 70px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent1), var(--accent2));
+}
+#stats {
+  background: rgba(99, 102, 241, 0.06);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.card,
+.project,
+.timeline-item,
+.stat-card {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+  backdrop-filter: blur(12px);
+}
+.card,
+.stat-card {
+  padding: 2rem;
+}
+.card:hover,
+.project:hover,
+.timeline-item:hover,
+.stat-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent1);
+  background: var(--surface-strong);
+}
+.about {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.8rem;
+}
+.skills,
+.stats-grid,
+.projects-grid {
+  display: grid;
+  gap: 1.2rem;
+}
+.skills {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+.stats-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.projects-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.stat-card h2 {
+  font-size: 2.7rem;
+  margin-bottom: 0.35rem;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.skill,
+.project,
+.timeline-item {
+  padding: 1.6rem;
+}
+.skill h3,
+.timeline-item h3,
+.project h3 {
+  color: var(--accent1);
+  margin-bottom: 0.8rem;
+}
+.skill {
+  border-radius: 18px;
+}
+.project {
+  overflow: hidden;
+  position: relative;
+}
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.12), transparent);
+  transition: left 0.5s ease;
+  z-index: 0;
+}
+.project:hover::before {
+  left: 100%;
+}
+.project h3,
+.project p,
+.timeline-item p {
+  position: relative;
+  z-index: 1;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.tag,
+.in-progress {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.88rem;
+}
+.tag {
+  background: rgba(91, 140, 255, 0.14);
+  color: #9bb9ff;
+}
+.in-progress {
+  background: rgba(255, 193, 7, 0.16);
+  color: #ffd66b;
+}
+.contact {
+  text-align: center;
+}
+#contact {
+  background: rgba(236, 72, 153, 0.06);
+  border-top: 1px solid var(--border);
+}
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.75rem;
+}
+.contact-links a {
+  display: inline-flex;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid var(--border);
+  padding: 0.95rem 1.25rem;
+  border-radius: 14px;
+  transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease;
+}
+.contact-links a:hover {
+  border-color: var(--accent1);
+  background: rgba(99, 102, 241, 0.14);
+  transform: translateY(-2px);
+  color: var(--accent1);
+}
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.timeline-item {
+  border-left: 3px solid var(--accent1);
+}
+footer {
+  text-align: center;
+  padding: 2rem 0 3rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (max-width: 980px) {
+  .about,
+  .skills,
+  .projects-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 110px;
+  }
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .btn-group {
+    flex-direction: column;
+  }
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+  section {
+    padding: 80px 0;
+  }
+}
 </style>
 </head>
 <body>
-<header><div class="container"><nav><div class="logo">Gibson.dev</div>
-<div class="nav-links">
-<a href="#about">About</a><a href="#skills">Skills</a><a href="#featured-project">Featured</a>
-<a href="#projects">Projects</a><a href="#research">Research</a><a href="#writing">Writing</a>
-<a href="#learning">Learning</a><a href="#values">Values</a><a href="#education">Journey</a><a href="#contact">Contact</a>
-</div>
-<div class="hamburger">
-<span></span>
-<span></span>
-<span></span>
-</div>
-</nav></div>
-<div class="mobile-menu">
-<a href="#about">About</a><a href="#skills">Skills</a><a href="#featured-project">Featured</a>
-<a href="#projects">Projects</a><a href="#research">Research</a><a href="#writing">Writing</a>
-<a href="#learning">Learning</a><a href="#values">Values</a><a href="#education">Journey</a><a href="#contact">Contact</a>
-</div>
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">Gibson.dev</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#featured-project">Featured</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#writing">Writing</a>
+        <a href="#learning">Learning</a>
+        <a href="#values">Values</a>
+        <a href="#education">Journey</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </div>
+  <div class="mobile-menu">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#featured-project">Featured</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#writing">Writing</a>
+    <a href="#learning">Learning</a>
+    <a href="#values">Values</a>
+    <a href="#education">Journey</a>
+    <a href="#contact">Contact</a>
+  </div>
 </header>
 
-<section class="hero">
-<div class="container"><div class="hero-content">
-<h1>Hi, I'm <span>Gibson Muiruri Mwangi</span></h1>
-<p>Software Engineering student building AI systems, cybersecurity solutions, and research-driven software. Currently developing Shea Core, a privacy-focused AI assistant, while exploring machine learning and intelligent automation.</p>
-<div class="tags">
-<span class="tag">Artificial Intelligence</span><span class="tag">Machine Learning</span>
-<span class="tag">Cybersecurity</span><span class="tag">Research</span><span class="tag">Software Engineering</span>
-</div><br>
-<div class="btn-group">
-<a href="#projects" class="btn btn-primary">View Projects</a>
-<a href="#contact" class="btn btn-secondary">Get In Touch</a>
-<a href="https://drive.google.com/file/d/1UbEzsmDUPQM_PgOKHmoeLxlb6zNDS4OS/view?usp=drive_link" class="btn btn-secondary">Download CV</a>
-</div></div></div></section>
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Hi, I'm <span>Gibson Muiruri Mwangi</span></h1>
+        <p>Software Engineering student building AI systems, cybersecurity solutions, and research-driven software. Currently developing Shea Core, a privacy-focused AI assistant, while exploring machine learning and intelligent automation.</p>
+        <div class="tags">
+          <span class="tag">Artificial Intelligence</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Cybersecurity</span>
+          <span class="tag">Research</span>
+          <span class="tag">Software Engineering</span>
+        </div>
+        <div class="btn-group">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          <a href="https://drive.google.com/file/d/1UbEzsmDUPQM_PgOKHmoeLxlb6zNDS4OS/view?usp=drive_link" class="btn btn-secondary">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="stats"><div class="container"><div class="stats-grid">
-<div class="stat-card reveal"><h2>6+</h2><p>Major Projects</p></div>
-<div class="stat-card reveal"><h2>4</h2><p>Core Fields</p></div>
-<div class="stat-card reveal"><h2>2022</h2><p>Journey Started</p></div>
-<div class="stat-card reveal"><h2>100%</h2><p>Self-Built Projects</p></div>
-</div></div></section>
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal"><h2>6+</h2><p>Major Projects</p></div>
+        <div class="stat-card reveal"><h2>4</h2><p>Core Fields</p></div>
+        <div class="stat-card reveal"><h2>2022</h2><p>Journey Started</p></div>
+        <div class="stat-card reveal"><h2>100%</h2><p>Self-Built Projects</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="featured-project"><div class="container">
-<h2 class="section-title">Featured Project</h2>
-<div class="card">
-<h3>🤖 Shea Core AI Assistant</h3>
-<p>Shea Core is a privacy-focused AI assistant built using Python, FastAPI, and Vosk. Designed as a modular productivity ecosystem, it combines voice interaction, automation, and local processing to provide a seamless, secure assistant experience.</p>
-<div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Vosk</span><span class="tag">Automation</span><span class="tag">AI</span></div>
-<p><strong>Status:</strong> Active Development</p>
-</div></div></section>
+  <section id="featured-project">
+    <div class="container">
+      <h2 class="section-title">Featured Project</h2>
+      <div class="card reveal">
+        <h3>🤖 Shea Core AI Assistant</h3>
+        <p>Shea Core is a privacy-focused AI assistant built using Python, FastAPI, and Vosk. Designed as a modular productivity ecosystem, it combines voice interaction, automation, and local processing to provide a seamless, secure assistant experience.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Vosk</span>
+          <span class="tag">Automation</span>
+          <span class="tag">AI</span>
+        </div>
+        <p><strong>Status:</strong> Active Development</p>
+      </div>
+    </div>
+  </section>
 
-<section id="about"><div class="container"><h2 class="section-title">About Me</h2>
-<div class="about">
-<div class="card"><h3>Who I Am</h3><p>I am a Software Engineering student with interests in AI, Machine Learning, Cybersecurity, and Software Development. I enjoy solving real-world problems through thoughtful code and research-driven solutions.</p></div>
-<div class="card"><h3>Current Focus</h3><p>AI-powered applications • Intelligent automation • Machine learning research • IoT security • Production-ready software • Flutter development</p></div>
-</div></div></section>
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about">
+        <div class="card reveal"><h3>Who I Am</h3><p>I am a Software Engineering student with interests in AI, Machine Learning, Cybersecurity, and Software Development. I enjoy solving real-world problems through thoughtful code and research-driven solutions.</p></div>
+        <div class="card reveal"><h3>Current Focus</h3><p>AI-powered applications • Intelligent automation • Machine learning research • IoT security • Production-ready software • Flutter development</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="skills"><div class="container"><h2 class="section-title">Technical Skills</h2>
-<div class="skills">
-<div class="skill"><h3>Programming</h3><p>Python, JavaScript, Node.js, HTML5, CSS3, SQL</p></div>
-<div class="skill"><h3>Backend</h3><p>Express.js, FastAPI, Flask, REST APIs, JWT</p></div>
-<div class="skill"><h3>Databases</h3><p>MySQL, Data Modeling, Database Design</p></div>
-<div class="skill"><h3>AI & ML</h3><p>Machine Learning, NLP, Data Analysis, Vosk</p></div>
-<div class="skill"><h3>Security</h3><p>Cybersecurity, IoT Security, DDoS Detection</p></div>
-<div class="skill"><h3>Tools</h3><p>Git, GitHub, Linux, Docker, Postman</p></div>
-</div></div></section>
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills">
+        <div class="skill reveal"><h3>Programming</h3><p>Python, JavaScript, Node.js, HTML5, CSS3, SQL</p></div>
+        <div class="skill reveal"><h3>Backend</h3><p>Express.js, FastAPI, Flask, REST APIs, JWT</p></div>
+        <div class="skill reveal"><h3>Databases</h3><p>MySQL, Data Modeling, Database Design</p></div>
+        <div class="skill reveal"><h3>AI & ML</h3><p>Machine Learning, NLP, Data Analysis, Vosk</p></div>
+        <div class="skill reveal"><h3>Security</h3><p>Cybersecurity, IoT Security, DDoS Detection</p></div>
+        <div class="skill reveal"><h3>Tools</h3><p>Git, GitHub, Linux, Docker, Postman</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="projects"><div class="container"><h2 class="section-title">Projects</h2>
-<div class="projects-grid">
-<div class="project reveal"><h3>🔐 Digital ID Verification System</h3><p>Secure digital identification platform with QR code generation and authentication.</p><span class="in-progress">Concept Phase</span></div>
-<div class="project reveal"><h3>🤖 Shea Core AI Assistant</h3><p>Voice-enabled personal AI assistant focused on privacy and automation.</p><span class="in-progress">Development Phase</span></div>
-<div class="project reveal"><h3>🛡️ IoT DDoS Detection</h3><p>Research-focused cybersecurity project for identifying attacks in IoT environments.</p><span class="in-progress">Concept Phase</span></div>
-<div class="project reveal"><h3>🦠 Pandemic Detection via Social Media</h3><p>Machine learning and social analytics for outbreak detection.</p><span class="in-progress">Development Phase</span></div>
-<div class="project reveal"><h3>🗺️ Traffic & Weather Optimization</h3><p>Route recommendation system.</p><span class="in-progress">Concept Phase</span></div>
-<div class="project reveal"><h3>🏨 Hotel Management Website</h3><p>Responsive hotel booking and management platform.</p><span class="in-progress">Research Phase</span></div>
-</div></div></section>
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+        <div class="project reveal"><h3>🔐 Digital ID Verification System</h3><p>Secure digital identification platform with QR code generation and authentication.</p><span class="in-progress">Concept Phase</span></div>
+        <div class="project reveal"><h3>🤖 Shea Core AI Assistant</h3><p>Voice-enabled personal AI assistant focused on privacy and automation.</p><span class="in-progress">Development Phase</span></div>
+        <div class="project reveal"><h3>🛡️ IoT DDoS Detection</h3><p>Research-focused cybersecurity project for identifying attacks in IoT environments.</p><span class="in-progress">Concept Phase</span></div>
+        <div class="project reveal"><h3>🦠 Pandemic Detection via Social Media</h3><p>Machine learning and social analytics for outbreak detection.</p><span class="in-progress">Development Phase</span></div>
+        <div class="project reveal"><h3>🗺️ Traffic & Weather Optimization</h3><p>Route recommendation system.</p><span class="in-progress">Concept Phase</span></div>
+        <div class="project reveal"><h3>🏨 Hotel Management Website</h3><p>Responsive hotel booking and management platform.</p><span class="in-progress">Research Phase</span></div>
+      </div>
+    </div>
+  </section>
 
-<section id="research"><div class="container"><h2 class="section-title">Research</h2>
-<div class="project"><h3>AI-Driven Disease Detection Research</h3><p>Research into AI and social media analysis for public health monitoring and early disease detection.</p></div>
-</div></section>
+  <section id="research">
+    <div class="container">
+      <h2 class="section-title">Research</h2>
+      <div class="project reveal"><h3>AI-Driven Disease Detection Research</h3><p>Research into AI and social media analysis for public health monitoring and early disease detection.</p></div>
+    </div>
+  </section>
 
-<section id="writing"><div class="container"><h2 class="section-title">Technical Writing</h2>
-<div class="projects-grid">
-<div class="project reveal"><h3>Building a Digital ID Verification System</h3><p>Architecture, authentication, QR verification, and deployment.</p></div>
-<div class="project reveal"><h3>Developing a Voice Assistant with Python</h3><p>Speech recognition, automation, and AI architecture.</p></div>
-<div class="project reveal"><h3>AI for Public Health Monitoring</h3><p>Machine learning and social media analytics for disease surveillance.</p></div>
-</div></div></section>
+  <section id="writing">
+    <div class="container">
+      <h2 class="section-title">Technical Writing</h2>
+      <div class="projects-grid">
+        <div class="project reveal"><h3>Building a Digital ID Verification System</h3><p>Architecture, authentication, QR verification, and deployment.</p></div>
+        <div class="project reveal"><h3>Developing a Voice Assistant with Python</h3><p>Speech recognition, automation, and AI architecture.</p></div>
+        <div class="project reveal"><h3>AI for Public Health Monitoring</h3><p>Machine learning and social media analytics for disease surveillance.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="learning"><div class="container"><h2 class="section-title">Currently Learning</h2>
-<div class="skills">
-<div class="skill"><h3>Flutter</h3></div>
-<div class="skill"><h3>Advanced Machine Learning</h3></div>
-<div class="skill"><h3>Cloud Technologies</h3></div>
-<div class="skill"><h3>AI Agents</h3></div>
-</div></div></section>
+  <section id="learning">
+    <div class="container">
+      <h2 class="section-title">Currently Learning</h2>
+      <div class="skills">
+        <div class="skill reveal"><h3>Flutter</h3></div>
+        <div class="skill reveal"><h3>Advanced Machine Learning</h3></div>
+        <div class="skill reveal"><h3>Cloud Technologies</h3></div>
+        <div class="skill reveal"><h3>AI Agents</h3></div>
+      </div>
+    </div>
+  </section>
 
-<section id="values"><div class="container"><h2 class="section-title">What Drives Me</h2>
-<div class="projects-grid">
-<div class="project reveal"><h3>Problem Solving</h3><p>Technology should solve meaningful problems.</p></div>
-<div class="project reveal"><h3>Continuous Learning</h3><p>Strong engineers stay curious.</p></div>
-<div class="project reveal"><h3>Impact</h3><p>Software should improve lives and workflows.</p></div>
-</div></div></section>
+  <section id="values">
+    <div class="container">
+      <h2 class="section-title">What Drives Me</h2>
+      <div class="projects-grid">
+        <div class="project reveal"><h3>Problem Solving</h3><p>Technology should solve meaningful problems.</p></div>
+        <div class="project reveal"><h3>Continuous Learning</h3><p>Strong engineers stay curious.</p></div>
+        <div class="project reveal"><h3>Impact</h3><p>Software should improve lives and workflows.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="education"><div class="container"><h2 class="section-title">My Journey</h2>
-<div class="timeline">
-<div class="timeline-item reveal"><h3>2022</h3><p>Started Software Engineering degree.</p></div>
-<div class="timeline-item reveal"><h3>2023</h3><p>Built foundational web development projects.</p></div>
-<div class="timeline-item reveal"><h3>2024</h3><p>Developing Digital ID Verification System.</p></div>
-<div class="timeline-item reveal"><h3>2025</h3><p>Started Shea Core AI Assistant.</p></div>
-<div class="timeline-item reveal"><h3>2026</h3><p>Focused on AI, ML, cybersecurity and research.</p></div>
-</div></div></section>
+  <section id="education">
+    <div class="container">
+      <h2 class="section-title">My Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal"><h3>2022</h3><p>Started Software Engineering degree.</p></div>
+        <div class="timeline-item reveal"><h3>2023</h3><p>Built foundational web development projects.</p></div>
+        <div class="timeline-item reveal"><h3>2024</h3><p>Developing Digital ID Verification System.</p></div>
+        <div class="timeline-item reveal"><h3>2025</h3><p>Started Shea Core AI Assistant.</p></div>
+        <div class="timeline-item reveal"><h3>2026</h3><p>Focused on AI, ML, cybersecurity and research.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section id="contact"><div class="container"><div class="contact">
-<h2 class="section-title">Let's Connect</h2>
-<p>Interested in AI projects, research opportunities, internships, freelance work, and software development.</p>
-<div class="contact-links">
-<a href="mailto: mwangigibson71@gmail.com">Email</a>
-<a href="https://github.com/mwasgibson">GitHub</a>
-<a href="https://drive.google.com/file/d/1UbEzsmDUPQM_PgOKHmoeLxlb6zNDS4OS/view?usp=drive_link">Download CV</a>
-</div></div></div></section>
+  <section id="contact">
+    <div class="container">
+      <div class="contact reveal">
+        <h2 class="section-title">Let's Connect</h2>
+        <p>Interested in AI projects, research opportunities, internships, freelance work, and software development.</p>
+        <div class="contact-links">
+          <a href="mailto: mwangigibson71@gmail.com">Email</a>
+          <a href="https://github.com/mwasgibson">GitHub</a>
+          <a href="https://drive.google.com/file/d/1UbEzsmDUPQM_PgOKHmoeLxlb6zNDS4OS/view?usp=drive_link">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
-<h3>Gibson Muiruri Mwangi</h3>
-<p>Software Engineer • AI Enthusiast • Researcher • Technical Writer</p>
-<p>Building intelligent systems one project at a time.</p>
-<p>© 2026 All Rights Reserved</p>
+  <div class="container">
+    <h3>Gibson Muiruri Mwangi</h3>
+    <p>Software Engineer • AI Enthusiast • Researcher • Technical Writer</p>
+    <p>Building intelligent systems one project at a time.</p>
+    <p>© 2026 All Rights Reserved</p>
+  </div>
 </footer>
 
 <script>
-const hamburger=document.querySelector('.hamburger');const mobileMenu=document.querySelector('.mobile-menu');const navLinks=document.querySelectorAll('.mobile-menu a');hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('active')});navLinks.forEach(link=>{link.addEventListener('click',()=>{hamburger.classList.remove('active');mobileMenu.classList.remove('active')})});const revealElements=document.querySelectorAll('.reveal');const revealOnScroll=()=>{revealElements.forEach(element=>{const elementTop=element.getBoundingClientRect().top;const elementBottom=element.getBoundingClientRect().bottom;if(elementTop<window.innerHeight*0.85&&elementBottom>0){element.classList.add('active')}})};window.addEventListener('scroll',revealOnScroll);window.addEventListener('load',revealOnScroll);const header=document.querySelector('header');let scrolled=false;window.addEventListener('scroll',()=>{if(window.scrollY>50){if(!scrolled){header.style.background='rgba(11,15,25,0.98)';header.style.boxShadow='0 4px 20px rgba(0,0,0,0.3)';scrolled=true}}else{header.style.background='rgba(11,15,25,0.92)';header.style.boxShadow='none';scrolled=false}});
+const hamburger = document.querySelector('.hamburger');
+const mobileMenu = document.querySelector('.mobile-menu');
+const navLinks = document.querySelectorAll('.mobile-menu a');
+const revealElements = document.querySelectorAll('.reveal');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('active');
+  });
+});
+
+const revealOnScroll = () => {
+  revealElements.forEach(element => {
+    const rect = element.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+      element.classList.add('active');
+    }
+  });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+
+const headerElement = document.querySelector('header');
+let scrolled = false;
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    if (!scrolled) {
+      headerElement.style.background = 'rgba(9, 13, 24, 0.98)';
+      headerElement.style.boxShadow = '0 10px 35px rgba(0, 0, 0, 0.22)';
+      scrolled = true;
+    }
+  } else {
+    headerElement.style.background = 'rgba(9, 13, 24, 0.92)';
+    headerElement.style.boxShadow = 'none';
+    scrolled = false;
+  }
+});
 </script>
 </body>
 </html>
