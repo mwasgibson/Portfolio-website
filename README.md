@@ -1,6 +1,6 @@
 # Gibson.dev — Portfolio Website
 
-A personal portfolio for Gibson Muiruri Mwangi (Gibson.dev) that showcases projects, research, writing, journey, and contact details. The site is a static, hand-crafted collection of HTML/CSS/JS files located in the portfolio/ folder. A single-file export (Gibson_Portfolio.html) exists at the repo root and is intentionally kept as an archive.
+A personal portfolio for Gibson Muiruri Mwangi (Gibson.dev) showcasing projects, research, writing, journey and contact details. The site is a static, hand-crafted collection of HTML/CSS/JS files located in the `portfolio/` folder. A single-file export (`Gibson_Portfolio.html`) exists at the repo root and is kept as an archive.
 
 ---
 
@@ -18,25 +18,37 @@ Table of contents
 
 ## About — Gibson and how a portfolio works
 
-This portfolio presents Gibson's public-facing professional identity: a concise story that combines background, key projects, technical skills, research interests, and calls-to-action (contact / collaboration). A good portfolio does three things:
+Gibson Muiruri Mwangi — Software Engineer • AI Builder • Researcher
 
-1. Explain who you are and what you care about (short, scannable headline + supporting paragraphs). The hero on `portfolio/index.html` performs this role using a short title, a typing line describing focus areas (AI, cybersecurity, research), and tags for quick scanning.
+This portfolio is designed to be a fast, scannable presentation of Gibson’s professional identity and work. A successful portfolio serves three practical purposes:
 
-2. Show evidence of skill through projects and artifacts (project pages and short descriptions). The `projects.html` page lists flagship work (Shea Core AI Assistant), security and research projects (Digital ID, IoT DDoS Detection), and domain-relevant tags. Each project entry is a conversation starter — link to code, demos, or writeups where available.
+1. Explain who you are and what you focus on
+   - The hero section communicates a short headline plus one line that summarizes core areas (AI, ML, cybersecurity, research, software engineering). The goal is rapid recognition — a reader should know in seconds whether your profile is relevant.
 
-3. Make it easy to take the next step (contact, resume, collaborations). This repo includes `contact.html` and `resume.html`, plus a visible CTA in the footer and hero to encourage outreach.
+2. Show proof and context through projects and artifacts
+   - Short project blurbs (featured items such as Shea Core) provide a contextual summary and link to deeper artifacts: repository links, demos, technical write-ups, or research notes. Each project entry is a conversation starter for recruiters, collaborators, or researchers.
 
-Design decisions in this portfolio emphasize clarity, performance, and control: a small, dependency-free codebase (vanilla HTML/CSS/JS) keeps the site fast and easy to host anywhere.
+3. Make it easy to take the next step
+   - Clear CTAs (Get In Touch, View Projects) and dedicated pages (resume, contact) reduce friction for outreach, hiring, and partnerships.
 
-Audience and use-cases
-- Recruiters and hiring managers skimming projects and skills.
-- Potential collaborators or researchers wanting to understand focus areas.
-- Engineers and designers reviewing UI/UX and implementation details.
+Why this layout works
+- Scannability: short headings, tags, and feature cards let readers scan quickly.
+- Evidence-first: small summaries with links provide enough detail without overwhelming the reader.
+- Minimal friction: a static, dependency-free site loads quickly and is simple to host (GitHub Pages, static CDN).
 
-Writing and curation best-practices shown here
-- Short, scannable sections (hero, featured project, featured research)
-- Tagging and categorization for quick discovery (AI, Security, Research)
-- Reusable components (navbar/footer) to keep content consistent across pages
+About Gibson (concise bio)
+
+Gibson Muiruri Mwangi is a software engineer focused on privacy-aware AI systems and security research. He builds prototypes and research-driven products using applied machine learning, FastAPI-driven services, and systems engineering. Gibson is the lead developer of Shea Core — a privacy-first personal AI assistant — and works on identity verification and IoT security projects.
+
+Open to
+- Research collaborations
+- Consulting and freelance projects in AI & security
+- Internship and mentorship opportunities
+
+Contact links
+- Website: https://gibson.dev
+- Email: mwangigibson71@gmail.com
+- GitHub: https://github.com/mwasgibson
 
 ---
 
@@ -49,36 +61,42 @@ Gibson_Portfolio.html          ← single-file export (archival)
 portfolio/                     ← canonical site source
   index.html                   ← landing / hero, featured project, stats
   about.html                   ← mission, skills, timeline
-  projects.html                ← project listings and details
+  projects.html                ← project listings and featured projects
   research.html                ← research summaries
-  writing.html                 ← posts or article links
+  writing.html                 ← articles and posts
   journey.html                 ← timeline and milestones
   contact.html                 ← contact CTA / static form
   resume.html                  ← resume content (static)
-  components/                  ← small HTML partials
-    navbar.html                ← shared nav + mobile menu
-    footer.html                ← shared footer
+  components/                  ← small HTML partials (navbar, footer)
+    navbar.html
+    footer.html
   assets/                      ← static assets
-    css/                       ← style.css (theme) and animations.css
-    js/                        ← main.js (behaviors) and animations.js
-    images/                    ← profile.jpg / profile.jpeg and other images
+    css/
+      style.css                ← design tokens, layout, theme
+      animations.css           ← keyframes & small animation helpers
+      responsive.css           ← (present — can be used for overrides)
+    js/
+      main.js                  ← primary UI behaviours
+      animations.js            ← reveal/progress helpers
+    images/
+      profile.jpg / profile.jpeg
   docs/                        ← placeholder for documentation (empty)
 ```
 
 Notes:
-- The canonical editing area is the `portfolio/` directory. `Gibson_Portfolio.html` is an exported single-file snapshot and is intentionally not the primary editing target.
+- `portfolio/` is the canonical editing area. `Gibson_Portfolio.html` is an exported single-file snapshot retained for convenience.
 
 ---
 
 ## How this repo was built — technical details
 
-Architecture
-- Static site: plain HTML pages using shared CSS and JS bundles under `portfolio/assets/`.
+High-level architecture
+- Static site: plain HTML pages that share a CSS and JS bundle under `portfolio/assets/`.
 - No build system or framework — pages are hand-authored and include the same header/footer markup (components are present in `portfolio/components/` for convenience).
 
 Key files and responsibilities
-- portfolio/assets/css/style.css — the design system: CSS variables (colors, radii, shadows, spacings) at `:root` and detailed rules for layout, cards, hero, grid utilities, responsive breakpoints, and components. Changing tokens here updates site-wide styling.
-- portfolio/assets/css/animations.css — animation keyframes and small helper classes (fade-up, fade-left/right, scale-in, floating/glow). Use these classes alongside the `reveal`/`active` flow to animate elements when they enter the viewport.
+- portfolio/assets/css/style.css — the design system: CSS variables (colors, radii, shadows, spacings) at `:root` and detailed rules for layout, cards, hero, grid utilities, and responsive breakpoints. Changing tokens here updates site-wide styling.
+- portfolio/assets/css/animations.css — animation keyframes and small helper classes (fade-up/left/right, scale-in, floating/glow). Use these classes alongside the `reveal`/`active` flow to animate elements when they enter the viewport.
 - portfolio/assets/js/main.js — primary client-side behaviours:
   - active nav highlighting using scroll position
   - IntersectionObserver-based reveal-on-scroll
@@ -88,15 +106,10 @@ Key files and responsibilities
 - portfolio/assets/js/animations.js — smaller animation orchestration and progress bar updates; helps sequence card transitions and hides the loading overlay after window load.
 - portfolio/components/navbar.html and footer.html — modular header/footer markup to keep pages consistent. Many pages include the same markup verbatim; if you centralize includes, consider a simple templating step in the future or a build script.
 
-Notable implementation choices
-- Accessibility: pages use semantic HTML (headings, nav, sections). Ensure images maintain descriptive `alt` text when replacing assets.
-- Performance: no external JS libraries; Google Fonts is the only external resource. The static approach keeps the runtime minimal and fast to load.
-- Animations: IntersectionObserver is used to avoid heavy scroll listeners; the CSS handles most visual transitions.
-
-Development workflow used to create this repo
-- Hand-edit HTML files in `portfolio/`.
-- Add/optimize images in `portfolio/assets/images/`. Keep filenames consistent with references in HTML (pages reference `assets/images/profile.jpg`).
-- Update CSS variables in `style.css` for theming changes.
+Implementation notes and rationale
+- No JS frameworks to keep client payload small and reduce runtime complexity.
+- IntersectionObserver used for reveals and counters for performance (instead of heavy scroll handlers).
+- Single-file export (Gibson_Portfolio.html) retained as an archive snapshot; portfolio/ is the canonical editing area.
 
 Suggested improvements (small, non-breaking)
 - Unify component usage: replace repeated header/footer markup across HTML files with a lightweight include process (e.g., a short Node script or a GitHub Action that injects components at build time).
@@ -150,10 +163,10 @@ Testing
 ## Deployment
 
 GitHub Pages
-- In repository Settings → Pages, set the Source to `main` branch and Folder to `/portfolio` (or use `/docs` if you move files there). This serves files at `https://<user>.github.io/<repo>/` and will place the site under `.../Portfolio-website/` unless configured for a user site.
+- In repository Settings → Pages: set the Source to `main` branch and Folder to `/portfolio` (or `/docs` if you move files there). This serves files at `https://<user>.github.io/<repo>/` and will place the site under `.../Portfolio-website/` unless configured for a user site.
 
 GitHub Actions (recommended for automated deploy)
-- You can add a simple workflow that copies `/portfolio` to the `gh-pages` branch or uses `peaceiris/actions-gh-pages` to publish the contents. Tell me if you want a starter workflow and I will add it.
+- You can add a simple GitHub Actions workflow that copies /portfolio to the Pages publishing branch. Below is a starter workflow I have added at `.github/workflows/deploy-pages.yml` that publishes the `portfolio/` folder to GitHub Pages automatically whenever you push to `main`.
 
 ---
 
@@ -165,18 +178,17 @@ GitHub Actions (recommended for automated deploy)
 ---
 
 ## License
-See the `LICENSE` file in repository root for license terms.
+See the `LICENSE` file in the repository root for license terms.
 
 ---
 
 ## Contact
-Owner: Gibson Muiruri Mwangi
-Site: Gibson.dev
-Repo: https://github.com/mwasgibson/Portfolio-website
+Gibson Muiruri Mwangi
+
+- Website: https://gibson.dev
+- Email: mwangigibson71@gmail.com
+- GitHub: https://github.com/mwasgibson
 
 ---
 
-If you'd like, I can now:
-- Add a short GitHub Actions workflow that deploys `/portfolio` to GitHub Pages, or
-- Create a CONTRIBUTING.md and a short development checklist, or
-- Replace repeated header/footer markup with a simple include script (Node or Python) and optionally run it once to centralize components.
+If you want changes to the bio or additional contact links (LinkedIn, X, personal blog), tell me and I'll update the README accordingly.
