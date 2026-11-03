@@ -1,0 +1,51 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "luma",
+  "name": "Gibson.dev",
+  "description": "Technical portfolio documenting Gibson Muiruri Mwangi's software projects, AI systems, cybersecurity work, research, and engineering practice.",
+  "colors": {
+    "primary": "#5b8cff",
+    "light": "#9bb9ff",
+    "dark": "#090d18"
+  },
+  "navbar": {
+    "links": [
+      { "label": "Portfolio", "href": "https://gibson.dev" },
+      { "label": "GitHub", "href": "https://github.com/mwasgibson" }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Contact",
+      "href": "mailto:mwangigibson71@gmail.com"
+    }
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Overview",
+        "pages": ["docs/index", "docs/about", "docs/skills"]
+      },
+      {
+        "group": "Projects",
+        "pages": [
+          "docs/projects/index",
+          "docs/projects/shea",
+          "docs/projects/software"
+        ]
+      },
+      {
+        "group": "Research & collaboration",
+        "pages": ["docs/research", "docs/collaboration"]
+      },
+      {
+        "group": "Contact",
+        "pages": ["docs/contact"]
+      }
+    ]
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/mwasgibson"
+    }
+  }
+}
