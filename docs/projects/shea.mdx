@@ -1,0 +1,31 @@
+---
+title: "Shea"
+description: "Architecture and development direction of a modular, user-sovereign AI agent runtime."
+---
+
+[Shea](https://github.com/mwasgibson/Shea) is a modular AI agent runtime under active development. Its central concern is not simply generating responses, but controlling how an agent moves from a user's intent to an authorized, verifiable action.
+
+The current project direction prioritizes the core orchestration and control plane before expanding execution tools or adding voice interfaces.
+
+## Architectural flow
+
+The intended control flow is:
+
+`Intent → Plan → Steps → Permission → Confirmation → Tool → Audit → Response`
+
+Each stage has a distinct responsibility. Understanding and planning should not silently grant execution authority. Risk and permission checks belong between deciding what should happen and carrying it out.
+
+## Design priorities
+
+- **User sovereignty:** the user remains in control of consequential actions.
+- **Least privilege:** tools should receive only the capabilities required for a task.
+- **Explicit authorization:** risky operations should pass policy checks and confirmation requirements.
+- **Auditability:** decisions and tool activity should leave useful records.
+- **Verification and recovery:** execution results should be checked, and failures should have defined recovery paths.
+- **Modularity:** providers, tools, storage, and system adapters should remain replaceable behind clear interfaces.
+
+## Current development boundary
+
+The project is being developed in stages. The core logic, planning, policy, permission, and execution contracts take priority. Broad operating-system automation, voice activation, and other hands-on capabilities should not be described as complete merely because they are part of the longer-term design.
+
+For implementation details and current code, see the [Shea repository](https://github.com/mwasgibson/Shea).
