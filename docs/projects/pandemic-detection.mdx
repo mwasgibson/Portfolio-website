@@ -1,0 +1,55 @@
+---
+title: "Pandemic Detection via Social Media and Machine Learning"
+sidebarTitle: "Pandemic Detection"
+description: "Uses machine learning and social analytics to detect early outbreak signals. Covers data ingestion, ML classification, and public health event mapping."
+---
+
+During the early stages of a disease outbreak, social media often surfaces signals — symptom reports, location-tagged illness posts, spikes in health-related queries — days or weeks before official surveillance systems register a case cluster. Gibson Muiruri Mwangi is building a machine learning pipeline that ingests and analyses social media data to provide early-warning signals of potential pandemic events, giving public health stakeholders more time to respond. The project is currently in **Development Phase**, with model architecture underway.
+
+## How It Works
+
+The system processes raw social data through a multi-stage pipeline before producing an actionable outbreak signal:
+
+<Steps>
+  <Step title="Social Media Data Ingestion">
+    Public posts, threads, and health-related content are collected from social platforms via APIs or scraping pipelines, filtered by language, geography, and topic relevance.
+  </Step>
+  <Step title="NLP Preprocessing">
+    Raw text is cleaned, tokenised, and normalised. Named entity recognition extracts disease names, symptoms, and locations. Noise, spam, and irrelevant content are filtered out.
+  </Step>
+  <Step title="ML Classification">
+    A trained classifier categorises each processed post by disease signal type — symptom report, confirmed case mention, healthcare query, or false positive — generating a structured event stream.
+  </Step>
+  <Step title="Outbreak Signal Detection">
+    Aggregated signals are analysed for temporal and geographic clustering. Anomaly detection identifies sudden spikes that exceed baseline thresholds and flags them as potential outbreak events.
+  </Step>
+</Steps>
+
+## Technical Approach
+
+<CardGroup cols={2}>
+  <Card title="NLP & Text Classification" icon="language">
+    Natural language processing models fine-tuned on health-domain text classify posts by symptom type, severity language, and geographic reference.
+  </Card>
+  <Card title="Social Data Ingestion Pipeline" icon="database">
+    A robust ingestion layer collects, deduplicates, and normalises high-volume social media streams for downstream ML processing.
+  </Card>
+  <Card title="Anomaly & Trend Detection" icon="chart-line">
+    Statistical and ML-based anomaly detection identifies abnormal spikes in disease-signal volume across time windows and geographic regions.
+  </Card>
+  <Card title="Public Health Signal Mapping" icon="map-location-dot">
+    Detected signals are mapped to geographic regions and severity tiers, producing structured alerts consumable by public health monitoring systems.
+  </Card>
+</CardGroup>
+
+## Research Connection
+
+This project is directly connected to Gibson's broader research interest in AI-driven public health monitoring. The methods and findings feed into his wider work on applying machine learning to real-world health surveillance challenges. For more on the underlying research, see the [Research](/research) page.
+
+<Note>
+  This project is currently in **Development Phase** — model architecture is underway and core pipeline components are being designed. The system is not yet in production.
+</Note>
+
+---
+
+← Back to [All Projects](/projects/overview)
