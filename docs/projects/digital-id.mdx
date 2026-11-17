@@ -1,0 +1,49 @@
+---
+title: "Digital ID Verification System with QR Authentication"
+sidebarTitle: "Digital ID"
+description: "A secure digital ID platform featuring QR code generation and authentication. Covers planned architecture, verification flow, and security design."
+---
+
+The Digital ID Verification System is a secure digital identification platform being designed by Gibson Muiruri Mwangi with QR code generation and authentication at its core. The goal is to replace or augment physical identity documents with a tamper-resistant digital alternative that can be issued, stored, and verified through a lightweight scanning workflow. The project is currently in **Concept Phase**, with architecture and security design underway.
+
+## Core Features
+
+- **QR code generation** — Each digital identity is encoded as a unique, cryptographically linked QR code that binds the holder's credentials to a verifiable token.
+- **Secure authentication layer** — A backend authentication mechanism validates the QR payload and confirms identity without exposing raw personal data.
+- **Digital identity management** — Administrators and issuing authorities can create, update, suspend, or revoke identities through a management interface.
+
+## Planned Architecture
+
+The identity lifecycle flows through four distinct stages:
+
+<Steps>
+  <Step title="Issue">
+    An authorised issuer creates a digital identity record and generates a unique QR code bound to a signed authentication token.
+  </Step>
+  <Step title="Store">
+    The digital ID is stored securely — either on a backend registry or in the holder's device — with encryption protecting sensitive fields.
+  </Step>
+  <Step title="Scan">
+    A verifier scans the QR code using a compatible reader. The encoded payload is extracted and passed to the authentication service.
+  </Step>
+  <Step title="Verify">
+    The backend validates the token signature, checks revocation status, and returns a verified or rejected response to the scanning party.
+  </Step>
+</Steps>
+
+## Tech Considerations
+
+| Layer | Planned Technology |
+|---|---|
+| **Authentication tokens** | JWT (JSON Web Tokens) for signed, expirable identity claims |
+| **QR code generation** | Dedicated QR library (e.g. `qrcode` for Python) with payload signing |
+| **Backend API** | Secure RESTful API to handle issuance, verification, and revocation |
+| **Data storage** | Encrypted database with access control for identity records |
+
+<Note>
+  This project is currently in **Concept Phase** — the architecture and security model are being designed. No production code has been written yet.
+</Note>
+
+---
+
+← Back to [All Projects](/projects/overview)

@@ -1,0 +1,49 @@
+---
+title: "IoT DDoS Detection: Cybersecurity Research Project"
+sidebarTitle: "IoT DDoS Detection"
+description: "A research-focused cybersecurity project for identifying and mitigating distributed denial-of-service attacks in Internet of Things network environments."
+---
+
+Distributed denial-of-service attacks targeting Internet of Things devices represent one of the fastest-growing categories of cybersecurity threat. Gibson Muiruri Mwangi is researching detection and mitigation strategies specifically suited to IoT environments — where devices are resource-constrained, heterogeneous, and deployed at massive scale. The project approaches the problem through traffic analysis, anomaly detection, and machine learning classification, with a focus on methods lightweight enough to run close to the network edge.
+
+## Problem Statement
+
+Traditional DDoS detection systems are designed for servers and enterprise infrastructure with abundant compute resources. IoT networks present a fundamentally different challenge:
+
+- **Resource constraints** — IoT devices (sensors, cameras, embedded controllers) have limited CPU, memory, and battery capacity, making heavyweight detection impractical on-device.
+- **Scale and heterogeneity** — A single IoT deployment may span thousands of devices running different firmware, protocols, and operating systems.
+- **Attack surface** — Compromised IoT devices are frequently recruited into botnets (such as Mirai) that generate volumetric DDoS traffic directed at external targets.
+- **Detection latency** — Slow detection windows allow attacks to saturate bandwidth before mitigation can engage.
+
+## Research Approach
+
+The project investigates a layered detection strategy that combines multiple analytical techniques:
+
+1. **Traffic pattern analysis** — Establishing baseline network behaviour per device class and flagging statistical deviations in packet rate, destination distribution, and protocol usage.
+2. **Anomaly detection** — Applying unsupervised learning methods to identify outlier traffic events that deviate from learned normal behaviour without requiring labelled attack data.
+3. **ML-based classification** — Training supervised classifiers on labelled IoT traffic datasets to distinguish attack categories (UDP flood, SYN flood, HTTP flood) from legitimate traffic.
+
+## Key Focus Areas
+
+<CardGroup cols={2}>
+  <Card title="Network Traffic Analysis" icon="chart-line">
+    Profiling per-device and per-segment traffic patterns to build dynamic baselines against which anomalies can be measured.
+  </Card>
+  <Card title="Anomaly Detection Algorithms" icon="triangle-exclamation">
+    Evaluating unsupervised and semi-supervised algorithms suited to continuous, high-volume network stream data.
+  </Card>
+  <Card title="IoT-Specific Threat Modelling" icon="network-wired">
+    Mapping the unique attack surfaces and botnet recruitment patterns specific to embedded and IoT device classes.
+  </Card>
+  <Card title="Lightweight Detection Methods" icon="microchip">
+    Designing detection logic that can operate within the compute and memory limits of edge nodes and IoT gateways.
+  </Card>
+</CardGroup>
+
+<Note>
+  This project is currently in **Concept Phase** — research, literature review, and threat modelling are in progress. Implementation has not yet begun.
+</Note>
+
+---
+
+← Back to [All Projects](/projects/overview)
