@@ -9,8 +9,8 @@ ROOT VARIABLES
 
 :root{
 
-    --primary:#3B82F6;
-    --primary-dark:#2563EB;
+    --primary:#1D4ED8;
+    --primary-dark:#1E40AF;
 
     --accent:#D97706;
 
@@ -40,7 +40,7 @@ ROOT VARIABLES
 
     --radius:18px;
 
-    --container:1280px;
+    --container:1200px;
 
 }
 
@@ -2408,4 +2408,114 @@ GRADIENT TEXT
 
     -webkit-text-fill-color:transparent;
 
+}
+
+/*==================================================
+ACCESSIBILITY, RESPONSIVE RHYTHM & STATIC INTERACTIONS
+==================================================*/
+
+.container,
+.nav-container {
+    width: min(var(--container), calc(100% - 3rem));
+    margin-inline: auto;
+}
+
+.grid {
+    gap: 2rem;
+}
+
+.stats-grid {
+    gap: 1.5rem;
+}
+
+h2 {
+    margin-bottom: 2rem;
+}
+
+.section {
+    padding-block: 7.5rem;
+}
+
+/* Hover may change colour, but it must not move or resize the layout. */
+*:hover {
+    transform: none !important;
+}
+
+.card:hover,
+.project-card:hover,
+.article:hover,
+.research-card:hover,
+.stat:hover,
+.feature:hover,
+.timeline-card:hover,
+.contact-card:hover,
+.hero-photo img:hover,
+.hero-social a:hover,
+.project-image:hover img,
+.project-card:hover .project-image img,
+.article:hover img,
+.image-frame:hover img,
+#backToTop:hover {
+    transform: none !important;
+}
+
+/* Keep button geometry stable while it is pressed or focused. */
+.btn,
+button,
+[role="button"] {
+    transform: none;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus,
+button:hover,
+button:active,
+button:focus,
+[role="button"]:hover,
+[role="button"]:active,
+[role="button"]:focus {
+    transform: none !important;
+    scale: 1 !important;
+}
+
+.btn:active,
+button:active,
+[role="button"]:active {
+    animation: none !important;
+}
+
+.btn:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #93C5FD;
+    outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+    .container,
+    .nav-container {
+        width: calc(100% - 2rem);
+    }
+
+    .section {
+        padding-block: 3.75rem;
+    }
+
+    h2 {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
