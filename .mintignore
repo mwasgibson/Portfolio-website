@@ -1,0 +1,5 @@
+# Keep the static portfolio site out of Mintlify's content pipeline.
+# Mintlify automatically loads every CSS and JS file in its content directory.
+# The portfolio's global CSS resets (including h1, body, a, ul and *) conflict
+# with Mintlify's own layout and cause the sidebar, page content and TOC to overlap.
+portfolio/
