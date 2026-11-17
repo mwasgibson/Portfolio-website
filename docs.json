@@ -25,7 +25,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Contact",
+      "label": "Get In Touch",
       "href": "mailto:mwangigibson71@gmail.com"
     }
   },
@@ -33,23 +33,34 @@
     "groups": [
       {
         "group": "Overview",
-        "pages": ["docs/index", "docs/about"]
+        "pages": [
+          "docs/introduction",
+          "docs/about"
+        ]
       },
       {
         "group": "Projects",
         "pages": [
-          "docs/projects/index",
-          "docs/projects/shea",
-          "docs/projects/software"
+          "docs/projects/overview",
+          "docs/projects/shea-core",
+          "docs/projects/digital-id",
+          "docs/projects/iot-ddos",
+          "docs/projects/pandemic-detection"
         ]
       },
       {
         "group": "Skills & Research",
-        "pages": ["docs/skills", "docs/research", "docs/collaboration"]
+        "pages": [
+          "docs/skills",
+          "docs/research",
+          "docs/writing"
+        ]
       },
       {
         "group": "Contact",
-        "pages": ["docs/contact"]
+        "pages": [
+          "docs/contact"
+        ]
       }
     ]
   },
