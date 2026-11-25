@@ -21,8 +21,6 @@ const mobileMenu = document.querySelector(".mobile-menu");
 
 const menuButton = document.querySelector(".mobile-menu-btn");
 
-const revealElements = document.querySelectorAll(".reveal");
-
 const counters = document.querySelectorAll(".counter");
 
 const navLinks = document.querySelectorAll(".nav-links a");
@@ -328,44 +326,6 @@ document.querySelectorAll(
 });
 
 /*==================================================
- SCROLL REVEAL
-==================================================*/
-
-const revealObserver = new IntersectionObserver(
-
-(entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("active");
-
-            revealObserver.unobserve(entry.target);
-
-        }
-
-    });
-
-},
-
-{
-
-    threshold:.15,
-
-    rootMargin:"0px 0px -80px 0px"
-
-}
-
-);
-
-revealElements.forEach(element=>{
-
-    revealObserver.observe(element);
-
-});
-
-/*==================================================
  COUNTER ANIMATION
 ==================================================*/
 
@@ -400,169 +360,75 @@ function animateCounter(counter){
             return;
 
         }
+/*==================================================
+ COUNTER ANIMATION
+==================================================*/
 
-        counter.innerText =
+const counters = document.querySelectorAll("[data-counter]");
 
-        Math.floor(current);
+function animateCounter(counter) {
+    const target = Number(counter.dataset.counter);
 
-        requestAnimationFrame(update);
-
+    if (!Number.isFinite(target)) {
+        return;
     }
 
-    update();
+    const duration = 1400;
+    const startTime = performance.now();
 
-}
+    function updateCounter(now) {
+        const progress = Math.min((now - startTime) / duration, 1);
+        counter.textContent = String(Math.round(target * progress));
 
-const counterObserver =
-
-new IntersectionObserver(
-
-(entries)=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            animateCounter(
-
-                entry.target
-
-            );
-
-            counterObserver.unobserve(
-
-                entry.target
-
-            );
-
+        if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+        } else {
+            counter.textContent = String(target);
         }
+    }
 
-    });
-
-},
-
-{
-
-    threshold:.5
-
+    requestAnimationFrame(updateCounter);
 }
 
-);
+if ("IntersectionObserver" in window) {
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.25 });
 
-counters.forEach(counter=>{
-
-    counterObserver.observe(counter);
-
-});
+    counters.forEach(counter => counterObserver.observe(counter));
+} else {
+    counters.forEach(animateCounter);
+}
 
 /*==================================================
  HERO TYPING EFFECT
 ==================================================*/
 
-const typingElement =
+const typingElement = document.querySelector(".typing-text");
 
-document.querySelector(".typing");
+if (typingElement) {
+    const message = (typingElement.dataset.text || "").trim();
 
-if(typingElement){
+    if (message) {
+        typingElement.textContent = "";
+        let index = 0;
 
-    const words=[
+        function typeMessage() {
+            typingElement.textContent = message.slice(0, index);
+            index += 1;
 
-        "Software Engineer",
-
-        "AI Developer",
-
-        "Cybersecurity Enthusiast",
-
-        "Researcher",
-
-        "Full Stack Developer"
-
-    ];
-
-    let wordIndex=0;
-
-    let charIndex=0;
-
-    let deleting=false;
-
-    function type(){
-
-        const currentWord=
-
-        words[wordIndex];
-
-        if(!deleting){
-
-            typingElement.textContent=
-
-            currentWord.substring(
-
-                0,
-
-                charIndex++
-
-            );
-
-            if(charIndex>
-
-            currentWord.length){
-
-                deleting=true;
-
-                setTimeout(type,1500);
-
-                return;
-
+            if (index <= message.length) {
+                window.setTimeout(typeMessage, 28);
             }
-
         }
 
-        else{
-
-            typingElement.textContent=
-
-            currentWord.substring(
-
-                0,
-
-                charIndex--
-
-            );
-
-            if(charIndex<0){
-
-                deleting=false;
-
-                wordIndex++;
-
-                if(
-
-                    wordIndex>=
-
-                    words.length
-
-                ){
-
-                    wordIndex=0;
-
-                }
-
-            }
-
-        }
-
-        setTimeout(
-
-            type,
-
-            deleting?50:90
-
-        );
-
+        typeMessage();
     }
-
-    type();
-
 }
 
 /*==================================================
