@@ -21,8 +21,6 @@ const mobileMenu = document.querySelector(".mobile-menu");
 
 const menuButton = document.querySelector(".mobile-menu-btn");
 
-const counters = document.querySelectorAll(".counter");
-
 const navLinks = document.querySelectorAll(".nav-links a");
 
 const sections = document.querySelectorAll("section[id]");
