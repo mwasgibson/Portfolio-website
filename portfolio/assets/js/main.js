@@ -167,52 +167,33 @@ if(backToTop){
  MOBILE MENU
 ==================================================*/
 
-if(menuButton && mobileMenu){
+if (menuButton && mobileMenu) {
+    const setMenuOpen = (isOpen) => {
+        mobileMenu.classList.toggle("active", isOpen);
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+    };
 
-    menuButton.addEventListener(
+    menuButton.addEventListener("click", () => {
+        setMenuOpen(!mobileMenu.classList.contains("active"));
+    });
 
-        "click",
+    mobileMenu.addEventListener("click", (event) => {
+        if (event.target.closest("a")) setMenuOpen(false);
+    });
 
-        ()=>{
-
-            mobileMenu.classList.toggle(
-
-                "active"
-
-            );
-
+    document.addEventListener("click", (event) => {
+        if (!mobileMenu.contains(event.target) && !menuButton.contains(event.target)) {
+            setMenuOpen(false);
         }
+    });
 
-    );
-
-    document.addEventListener(
-
-        "click",
-
-        (e)=>{
-
-            if(
-
-                !mobileMenu.contains(e.target)
-
-                &&
-
-                !menuButton.contains(e.target)
-
-            ){
-
-                mobileMenu.classList.remove(
-
-                    "active"
-
-                );
-
-            }
-
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && mobileMenu.classList.contains("active")) {
+            setMenuOpen(false);
+            menuButton.focus();
         }
-
-    );
-
+    });
 }
 
 /*==================================================
