@@ -327,49 +327,11 @@ document.querySelectorAll(
  COUNTER ANIMATION
 ==================================================*/
 
-function animateCounter(counter){
-
-    const target =
-
-    Number(
-
-        counter.dataset.target
-
-    );
-
-    const duration = 2000;
-
-    const start = 0;
-
-    let current = start;
-
-    const increment = target /
-
-    (duration / 16);
-
-    function update(){
-
-        current += increment;
-
-        if(current >= target){
-
-            counter.innerText = target;
-
-            return;
-
-        }
-/*==================================================
- COUNTER ANIMATION
-==================================================*/
-
 const counters = document.querySelectorAll("[data-counter]");
 
 function animateCounter(counter) {
     const target = Number(counter.dataset.counter);
-
-    if (!Number.isFinite(target)) {
-        return;
-    }
+    if (!Number.isFinite(target)) return;
 
     const duration = 1400;
     const startTime = performance.now();
