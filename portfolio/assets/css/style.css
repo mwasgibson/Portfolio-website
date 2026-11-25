@@ -317,3 +317,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* Small page-specific primitives used by the current markup. */
+.typing-text { min-height: 3.4em; }
+.profile-image { width: 100%; height: 100%; object-fit: cover; }
