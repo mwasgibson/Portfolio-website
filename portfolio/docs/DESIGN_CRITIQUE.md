@@ -109,3 +109,25 @@ The root variables provide a useful starting point, but component styles also co
 7. Run accessibility, contrast, keyboard, and performance checks against the rendered site.
 
 No items in this list have been implemented by this review.
+
+
+## Implementation follow-up · 26 November 2026
+
+The first layout-foundation pass has now addressed the structural findings above:
+
+- Rebuilt the shared stylesheet around the classes used by the current eight HTML pages.
+- Replaced the legacy responsive selectors with rules for the current hero, about, journey, project, research, writing, contact, and navigation layouts.
+- Added explicit styles for all 62 classes found in the page markup. A source-level audit currently finds no markup classes without a matching CSS selector.
+- Standardised all eight desktop and mobile navigation menus, including the Resume destination and the active-page state.
+- Added a mobile menu control to the Resume page, which previously had no mobile navigation control.
+- Improved mobile-menu interaction with accessible labels, expanded-state updates, outside-click closing, Escape-key closing, and close-on-navigation.
+- Updated the visual-system documentation to reflect the new active tokens and layout rules.
+
+### Still outstanding
+
+- The site has not yet been reviewed in a rendered browser at desktop, tablet, and mobile widths. Source-level checks do not prove the absence of visual defects.
+- The four Writing article links still use placeholder destinations. This is intentionally left untouched because it requires content decisions.
+- The About page profile image source still needs a separate asset-path check.
+- Keyboard navigation, contrast, and full accessibility testing remain to be performed against the rendered site.
+
+This implementation pass changes layout and shared navigation behaviour. It does not rewrite portfolio copy, project descriptions, or the underlying page information architecture.
