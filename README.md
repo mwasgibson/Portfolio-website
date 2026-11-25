@@ -74,7 +74,7 @@ The portfolio repeats some navigation and footer markup across pages. The `portf
 
 ## Contact
 
-- Website: [gibson.dev](https://gibson.dev)
+- Portfolio: [GitHub Pages](https://mwasgibson.github.io/Portfolio-website/)
 - GitHub: [@mwasgibson](https://github.com/mwasgibson)
 - Email: mwangigibson71@gmail.com
 
